@@ -3,8 +3,11 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        echo "fk";
-        //首页的list
+        $Moneylist=M("Moneylist");
+        $d=$Moneylist->order('date desc')->select();
+
+        $this->data=$d;
+        $this->display();
     }
 
     public function cln(){
@@ -55,25 +58,40 @@ class IndexController extends Controller {
             $setting['savePath']='fapiao/';
             $Upload = new \Think\Upload($setting);
             $info = $Upload->upload();
-            if(!$info){
-                $this->error("写入云存储失败~");
-            }
-            else {
-                $url_oss = OSS2 . $info[$fieldname]['savepath'] . $info[$fieldname]['savename'];
-                $Moneylist=M("Moneylist");
-                $add_arr['pic']=$url_oss;
-                $add_arr['account']=$account;
-                $add_arr['thing']=$thing;
-                $add_arr['date']=$date;
-                $add_arr['fid']=I("get.fid","1");
+            // if(!$info){
+            //     $this->error("写入云存储失败~");
+            // }
+            // else {
+            //     $url_oss = OSS2 . $info[$fieldname]['savepath'] . $info[$fieldname]['savename'];
+            //     $Moneylist=M("Moneylist");
+            //     $add_arr['pic']=$url_oss;
+            //     $add_arr['account']=$account;
+            //     $add_arr['thing']=$thing;
+            //     $add_arr['date']=$date;
+            //     $add_arr['fid']=I("get.fid","1");
 
-                $s=$Moneylist->add($add_arr);
-                if($s){
-                    $this->success("写入数据库成功~");
-                }
-                else{
-                    $this->error("写入数据库失败~");
-                }
+            //     $s=$Moneylist->add($add_arr);
+            //     if($s){
+            //         $this->success("写入数据库成功~");
+            //     }
+            //     else{
+            //         $this->error("写入数据库失败~");
+            //     }
+            // }
+            $url_oss = OSS2 . $info[$fieldname]['savepath'] . $info[$fieldname]['savename'];
+            $Moneylist=M("Moneylist");
+            $add_arr['pic']="固定路径";
+            $add_arr['account']=$account;
+            $add_arr['thing']=$thing;
+            $add_arr['date']=$date;
+            $add_arr['fid']=I("get.fid","1");
+
+            $s=$Moneylist->add($add_arr);
+            if($s){
+                $this->success("写入数据库成功~");
+            }
+            else{
+                $this->error("写入数据库失败~");
             }
         }
     }

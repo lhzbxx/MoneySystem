@@ -43,7 +43,31 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">消费时间</label>
                     <div class="col-sm-10">
-                        <input type="text" name="date" class="form-control" id="inputEmail3" placeholder="请输入发票消费时间">
+                        <div class="input-group">
+                            <input type="text" name="date" class="form-control" id="inputEmail3" placeholder="请输入发票消费时间">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default" aria-expanded="false">今日</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">分类</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <input type="text" name="date" class="form-control" id="inputEmail3" placeholder="请输入开销类型">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">选择 <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

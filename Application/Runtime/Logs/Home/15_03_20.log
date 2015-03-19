@@ -1,0 +1,3 @@
+[ 2015-03-20T00:03:46+08:00 ] ::1 /MoneySystem/index.php/Home/Index/publish?fid=0
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'moneysystem.moneylist' doesn't exist
+
