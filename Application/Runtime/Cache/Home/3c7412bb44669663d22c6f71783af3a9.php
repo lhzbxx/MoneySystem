@@ -31,7 +31,7 @@
             <h2>发票登记页面</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row" align="center">
         <div class="col-md-4 col-md-offset-4">
             <form class="form-horizontal" action="<?php echo ($action_url); ?>" method="post" enctype ="multipart/form-data" >
                 <div class="form-group">
@@ -68,6 +68,7 @@
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">选择 <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$d): $mod = ($i % 2 );++$i;?><li><?php echo ($d); ?></li><?php endforeach; endif; else: echo "" ;endif; ?>
                                 </ul>
                             </div>
                         </div>
@@ -77,17 +78,17 @@
                 <div class="form-group">
                     <label for="exampleInputFile" class="col-sm-2 control-label">发票上传</label>
                     <div class="col-sm-10">
-                        <input type="file" name="file" id="exampleInputFile">
-                        <p class="help-block">把扫描好的发票从这里上传到服务器</p>
+                        <input type="file" name="file" accept="image/*" id="exampleInputFile">
+                        <p class="help-block">（把扫描好的发票从这里上传到服务器）</p>
                     </div>
 
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">写入数据库</button>
-                        &nbsp;
-                        <a href="<?php echo U('Home/Index/index','','');?>" class="btn btn-primary">回到发票列表</a>
+                    <div class="col-col-sm-10">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="<?php echo U('Home/Index/index','','');?>" class="btn btn-primary">返回</a>
                     </div>
                 </div>
             </form>
