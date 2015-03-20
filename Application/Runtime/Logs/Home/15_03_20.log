@@ -1,3 +1,15 @@
 [ 2015-03-20T00:03:46+08:00 ] ::1 /MoneySystem/index.php/Home/Index/publish?fid=0
 ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'moneysystem.moneylist' doesn't exist
 
+[ 2015-03-20T08:41:54+08:00 ] 127.0.0.1 /moneysystem/
+ERR: SQLSTATE[HY000] [1049] Unknown database 'moneysystem'
+
+[ 2015-03-20T08:52:00+08:00 ] 127.0.0.1 /moneysystem/index.php/home/index/cln
+ERR: SQLSTATE[HY000] [1049] Unknown database 'moneysystem'
+
+[ 2015-03-20T08:53:42+08:00 ] 127.0.0.1 /moneysystem/index.php/Home/Index/index
+ERR: SQLSTATE[HY000] [1049] Unknown database 'moneysystem'
+
+[ 2015-03-20T08:55:35+08:00 ] 127.0.0.1 /moneysystem/index.php/Home/Index/index
+ERR: SQLSTATE[HY000] [1049] Unknown database 'moneysystem'
+

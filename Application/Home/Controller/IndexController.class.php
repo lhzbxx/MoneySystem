@@ -3,22 +3,20 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        $Moneylist=M("Moneylist");
-        $d=$Moneylist->order('date desc')->select();
-
+        $List=M("List");
+        $d=$List->order('date desc')->select();
         $this->data=$d;
         $this->display();
     }
 
-    public function cln(){
-        $Zhangbu=M("Zhangbu");
-        $d=$Zhangbu->order('date desc')->select();
-
+    public function bookShow(){
+        $Book=M("Book");
+        $d=$Book->order('date desc')->select();
         $this->data=$d;
         $this->display();
     }
 
-    public function admin(){
+    public function bookAdd(){
         $name=I("post.name","");
         $info=I("post.info","");
         $date=I("post.date",'');
@@ -27,12 +25,11 @@ class IndexController extends Controller {
             $this->display();
         }
         else{
-            $Zhangbu=M("Zhangbu");
+            $Book=M("Book");
             $add_arr['name']=$name;
             $add_arr['info']=$info;
             $add_arr['date']=$date;
-
-            $s=$Zhangbu->add($add_arr);
+            $s=$Book->add($add_arr);
             if($s){
                 $this->success("添加账本成功~");
             }
@@ -43,7 +40,6 @@ class IndexController extends Controller {
     }
 
     public function publish(){
-
         $account=I("post.account","");
         $thing=I("post.thing","");
         $date=I("post.date","");
