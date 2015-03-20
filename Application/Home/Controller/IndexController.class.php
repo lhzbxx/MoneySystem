@@ -47,7 +47,7 @@ class IndexController extends Controller {
 
     public function checkAdd(){
         $Book=M("Book");
-        $d=$Book->getField('name');
+        $d=$Book->select();
         $this->data=$d;
 
         $amount =   I("post.amount","");
