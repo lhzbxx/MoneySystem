@@ -9,6 +9,12 @@ class IndexController extends Controller {
         $this->display();
     }
 
+    // public function bookList(){
+    //     $Book=M("Book");
+    //     $d=$Book->getFild('name');
+    //     $this->ajaxReturn($d);
+    // }
+
     public function bookShow(){
         $Book=M("Book");
         $d=$Book->order('date desc')->select();
@@ -40,6 +46,10 @@ class IndexController extends Controller {
     }
 
     public function checkAdd(){
+        $Book=M("Book");
+        $d=$Book->getField('name');
+        $this->data=$d;
+
         $amount =   I("post.amount","");
         $info   =   I("post.info","");
         $date   =   I("post.date","");
