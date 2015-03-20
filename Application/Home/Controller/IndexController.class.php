@@ -3,10 +3,27 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        $Book=M("Book");
-        $d=$Book->order('date desc')->select();
-        $this->data=$d;
-        $this->display();
+        $User=M("User");
+        $name=I("post.name","");
+        $password=I("post.password","");
+        $d=$User->where("name='%s' and password='%s'", $name, $password)->getField('auth');
+        if ($password == '' || $name == '') {
+            $this->display();
+        } else {
+            if ($d == 1) {
+                $Book=M("Book");
+                $d=$Book->order('date desc')->select();
+                $this->data=$d;
+                $this->display('Index:index_A');
+            } else if ($d == 2) {
+                $Book=M("Book");
+                $d=$Book->order('date desc')->select();
+                $this->data=$d;
+                $this->display('Index:index_B');
+            } else {
+                $this->error("用户名或密码错误~");
+            }
+        }
     }
 
     // public function bookList(){
@@ -23,7 +40,20 @@ class IndexController extends Controller {
         $this->display();
     }
 
-    public function checkChange(){
+    public function checkChange_B(){
+        $id=I("get.id");
+        $List=M("List");
+        $data['state'] = 1;
+        $s = $List->where("id='%d'",$id)->save($data);
+        if($s){
+            $this->success("修改状态成功~");
+        }
+        else{
+            $this->error("修改状态失败~");
+        }
+    }
+
+    public function checkChange_A(){
         $id=I("get.id");
         $List=M("List");
         $data['state'] = 2;
@@ -140,3 +170,4 @@ class IndexController extends Controller {
     }
 
 }
+?>

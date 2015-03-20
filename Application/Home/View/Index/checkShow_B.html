@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发票列表</title>
+
+    <!-- Bootstrap -->
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>发票列表</h2>
+        </div>
+    </div>
+    <div class="row" align="center">
+        <div class="col-md-6 col-md-offset-3">
+            <table class="table table-striped">
+                <tr>
+                    <th>号码</th>
+                    <th>图片</th>
+                    <th>金额</th>
+                    <th>时间</th>
+                    <th>备注</th>
+                    <th>账本</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <volist name="data" id="d">
+                    <tr>
+                        <td>{$d.fid}</td>
+                        <td><a target="_blank" Title="点击显示大图" href="__ROOT__/Uploads/{$d.pic}.jpg"><img width="80" src="__ROOT__/Uploads/{$d.pic}.jpg"></a></td>
+                        <td>{$d.amount}</td>
+                        <td>{$d.date}</td>
+                        <td>{$d.info}</td>
+                        <td>{$d.book}</td>
+                        <td>
+                        <switch name="d.state">
+                            <case value="1"><span class="label label-warning">等待验证</span></case>
+                            <case value="2"><span class="label label-success">已汇款</span></case>
+                            <default /><span class="label label-danger">未汇款</span>
+                        </switch></td>
+                        <td><a href="{:U('Home/Index/checkChange','','')}?id={$d.id}" class="btn btn-primary btn-xs">汇款</a> </td>
+                    </tr>
+                </volist>
+            </table>
+            <a href="{:U('Home/Index/index','','')}" align="center" class="btn btn-primary">返回</a>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</body>
+</html>
