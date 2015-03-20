@@ -174,8 +174,8 @@ class IndexController extends Controller {
             $upload->autoSub = false;
             $upload->savePath = ''; // 设置附件上传（子）目录
             // 上传文件 
-            $info = $upload->upload();
-            if(!$info) { // 上传错误提示错误信息
+            $msg = $upload->upload();
+            if(!$msg) { // 上传错误提示错误信息
                 $this->error($upload->getError());
             } else { // 上传成功
                 $this->success('上传成功！');
@@ -184,8 +184,8 @@ class IndexController extends Controller {
             $Moneylist=M("List");
             $add_arr['pic']='./Uploads/'+$fid;
             $add_arr['amount']=$amount;
-            $add_arr['info']=$info;
             $add_arr['date']=$date;
+            $add_arr['info']=$info;
             $add_arr['book']=$book;
             $add_arr['fid']=$fid;
 
