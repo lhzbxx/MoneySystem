@@ -7,7 +7,7 @@
     <title>发票列表</title>
 
     <!-- Bootstrap -->
-    <link href="/moneysystem/Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/MoneySystem/Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,6 +49,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/moneysystem/Public/js/bootstrap.min.js"></script>
+<script src="/MoneySystem/Public/js/bootstrap.min.js"></script>
 </body>
 </html>

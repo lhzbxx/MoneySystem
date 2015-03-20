@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <title>账本列表</title>
 
     <!-- Bootstrap -->
-    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/MoneySystem/Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,14 +32,12 @@
                     <th>建立时间</th>
                     <th>操作</th>
                 </tr>
-                <volist name="data" id="d">
-                    <tr>
-                        <td>{$d.name}</td>
-                        <td>{$d.info}</td>
-                        <td>{$d.date}</td>
-                        <td><a href="{:U('Home/Index/checkAdd','','')}?fid={$d.id}" class="btn btn-primary btn-xs">添加发票</a> </td>
-                    </tr>
-                </volist>
+                <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$d): $mod = ($i % 2 );++$i;?><tr>
+                        <td><?php echo ($d["name"]); ?></td>
+                        <td><?php echo ($d["info"]); ?></td>
+                        <td><?php echo ($d["date"]); ?></td>
+                        <td><a href="<?php echo U('Home/Index/checkAdd','','');?>?fid=<?php echo ($d["id"]); ?>" class="btn btn-primary btn-xs">添加发票</a> </td>
+                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
             </table>
 
         </div>
@@ -49,6 +47,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script src="/MoneySystem/Public/js/bootstrap.min.js"></script>
 </body>
 </html>
