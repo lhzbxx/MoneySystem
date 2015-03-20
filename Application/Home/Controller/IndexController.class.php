@@ -26,13 +26,35 @@ class IndexController extends Controller {
         }
     }
 
+    public function index_A() {
+        $Book=M("Book");
+        $d=$Book->order('date desc')->select();
+        $this->data=$d;
+        $this->display('Index:index_A');
+    }
+
+    public function index_B() {
+        $Book=M("Book");
+        $d=$Book->order('date desc')->select();
+        $this->data=$d;
+        $this->display('Index:index_B');
+    }
+
     // public function bookList(){
     //     $Book=M("Book");
     //     $d=$Book->getFild('name');
     //     $this->ajaxReturn($d);
     // }
 
-    public function checkShow(){
+    public function checkShow_A(){
+        $book=I("get.book");
+        $List=M("List");
+        $d=$List->where("book='%s'",$book)->order('date desc')->select();
+        $this->data=$d;
+        $this->display();
+    }
+
+    public function checkShow_B(){
         $book=I("get.book");
         $List=M("List");
         $d=$List->where("book='%s'",$book)->order('date desc')->select();
@@ -44,11 +66,15 @@ class IndexController extends Controller {
         $id=I("get.id");
         $List=M("List");
         $data['state'] = 1;
-        $s = $List->where("id='%d'",$id)->save($data);
-        if($s){
-            $this->success("修改状态成功~");
-        }
-        else{
+        if($List->where("id='%d'",$id)->getField('state') == 0) {
+            $s = $List->where("id='%d'",$id)->save($data);
+            if($s) {
+                $this->success("修改状态成功~");
+            }
+            else {
+                $this->error("修改状态失败~");
+            }
+        } else {
             $this->error("修改状态失败~");
         }
     }
@@ -57,11 +83,15 @@ class IndexController extends Controller {
         $id=I("get.id");
         $List=M("List");
         $data['state'] = 2;
-        $s = $List->where("id='%d'",$id)->save($data);
-        if($s){
-            $this->success("修改状态成功~");
-        }
-        else{
+        if($List->where("id='%d'",$id)->getField('state') == 1) {
+            $s = $List->where("id='%d'",$id)->save($data);
+            if($s) {
+                $this->success("修改状态成功~");
+            }
+            else {
+                $this->error("修改状态失败~");
+            }
+        } else {
             $this->error("修改状态失败~");
         }
     }
