@@ -39,12 +39,17 @@
                 <volist name="data" id="d">
                     <tr>
                         <td>{$d.fid}</td>
-                        <td>{$d.pic}</td>
+                        <td><a target="_blank" Title="点击显示大图" href="__ROOT__/Uploads/{$d.pic}.jpg"><img width="80" src="__ROOT__/Uploads/{$d.pic}.jpg"></a></td>
                         <td>{$d.amount}</td>
                         <td>{$d.date}</td>
                         <td>{$d.info}</td>
                         <td>{$d.book}</td>
-                        <td>{$d.state}</td>
+                        <td>
+                        <switch name="d.state">
+                            <case value="1"><span class="label label-warning">等待验证</span></case>
+                            <case value="2"><span class="label label-success">已汇款</span></case>
+                            <default /><span class="label label-danger">未汇款</span>
+                        </switch></td>
                         <td><a href="{:U('Home/Index/checkAdd','','')}?fid={$d.id}" class="btn btn-primary btn-xs">确认</a> </td>
                     </tr>
                 </volist>
