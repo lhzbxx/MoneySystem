@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>账本列表</title>
+    <title>发票列表</title>
 
     <!-- Bootstrap -->
     <link href="/moneysystem/Public/css/bootstrap.min.css" rel="stylesheet">
@@ -20,26 +20,28 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h2>账本列表</h2>
+            <h2>发票列表</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <table class="table table-striped">
                 <tr>
-                    <th>账本名称</th>
-                    <th>账本介绍</th>
-                    <th>建立时间</th>
-                    <th>操作</th>
+                    <th>号码</th>
+                    <th>图片</th>
+                    <th>金额</th>
+                    <th>时间</th>
+                    <th>备注</th>
                 </tr>
                 <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$d): $mod = ($i % 2 );++$i;?><tr>
-                        <td><?php echo ($d["name"]); ?></td>
-                        <td><?php echo ($d["info"]); ?></td>
+                        <td><?php echo ($d["fid"]); ?></td>
+                        <td><?php echo ($d["pic"]); ?></td>
+                        <td><?php echo ($d["account"]); ?></td>
                         <td><?php echo ($d["date"]); ?></td>
-                        <td><a href="<?php echo U('Home/Index/checkShow','','');?>?fid=<?php echo ($d["id"]); ?>" class="btn btn-primary btn-xs">查看</a></td>
+                        <td><?php echo ($d["thing"]); ?></td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
             </table>
-
+            <a href="<?php echo U('Home/Index/cln','','');?>" align="center" class="btn btn-primary">进入账本</a>
         </div>
     </div>
 </div>

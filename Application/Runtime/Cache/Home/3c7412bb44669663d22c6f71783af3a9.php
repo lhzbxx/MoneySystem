@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <title>发票登记页面</title>
 
     <!-- Bootstrap -->
-    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/moneysystem/Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,9 +31,9 @@
             <h2>发票登记页面</h2>
         </div>
     </div>
-    <div class="row" align="center">
+    <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <form class="form-horizontal" action="{$action_url}" method="post" enctype ="multipart/form-data" >
+            <form class="form-horizontal" action="<?php echo ($action_url); ?>" method="post" enctype ="multipart/form-data" >
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">金额</label>
                     <div class="col-sm-10">
@@ -77,17 +77,17 @@
                 <div class="form-group">
                     <label for="exampleInputFile" class="col-sm-2 control-label">发票上传</label>
                     <div class="col-sm-10">
-                        <input type="file" name="file" accept="image/*" id="exampleInputFile">
-                        <p class="help-block">（把扫描好的发票从这里上传到服务器）</p>
+                        <input type="file" name="file" id="exampleInputFile">
+                        <p class="help-block">把扫描好的发票从这里上传到服务器</p>
                     </div>
 
                 </div>
 
                 <div class="form-group">
-                    <div class="col-col-sm-10">
-                        <button type="submit" class="btn btn-primary">提交</button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{:U('Home/Index/index','','')}" class="btn btn-primary">返回</a>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">写入数据库</button>
+                        &nbsp;
+                        <a href="<?php echo U('Home/Index/index','','');?>" class="btn btn-primary">回到发票列表</a>
                     </div>
                 </div>
             </form>
@@ -98,6 +98,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script src="/moneysystem/Public/js/bootstrap.min.js"></script>
 </body>
 </html>

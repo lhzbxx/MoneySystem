@@ -13,3 +13,9 @@ ERR: SQLSTATE[HY000] [1049] Unknown database 'moneysystem'
 [ 2015-03-20T08:55:35+08:00 ] 127.0.0.1 /moneysystem/index.php/Home/Index/index
 ERR: SQLSTATE[HY000] [1049] Unknown database 'moneysystem'
 
+[ 2015-03-20T11:28:11+08:00 ] 127.0.0.1 /moneysystem/index.php/Home/Index/cln
+ERR: 非法操作:cln
+
+[ 2015-03-20T11:32:59+08:00 ] 127.0.0.1 /moneysystem/index.php/Home/Index/checkshow
+ERR: 非法操作:checkshow
+

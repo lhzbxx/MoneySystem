@@ -36,7 +36,7 @@
                         <td><?php echo ($d["name"]); ?></td>
                         <td><?php echo ($d["info"]); ?></td>
                         <td><?php echo ($d["date"]); ?></td>
-                        <td><a href="<?php echo U('Home/Index/checkShow','','');?>?fid=<?php echo ($d["id"]); ?>" class="btn btn-primary btn-xs">查看</a></td>
+                        <td><a href="<?php echo U('Home/Index/addCheck','','');?>?fid=<?php echo ($d["id"]); ?>" class="btn btn-primary btn-xs">添加发票</a> </td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
             </table>
 

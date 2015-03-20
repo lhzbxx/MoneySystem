@@ -39,21 +39,21 @@ class IndexController extends Controller {
         }
     }
 
-    public function publish(){
-        $account=I("post.account","");
-        $thing=I("post.thing","");
-        $date=I("post.date","");
+    public function checkAdd(){
+        $amount =   I("post.amount","");
+        $info   =   I("post.info","");
+        $date   =   I("post.date","");
 
-        if($account=='' || $thing=='' || $date=='') {
-            $this->action_url=U('Home/Index/publish','','')."?fid=".I("get.fid","");
+        if($amount=='' || $info=='' || $date=='') {
+            $this->action_url=U('Home/Index/checkAdd','','')."?fid=".I("get.fid","");
             $this->display();
         }
         else{
-            $setting=C('UPLOAD_SITEIMG_OSS2');
-            $fieldname = "file";
-            $setting['savePath']='fapiao/';
-            $Upload = new \Think\Upload($setting);
-            $info = $Upload->upload();
+            // $setting=C('UPLOAD_SITEIMG_OSS2');
+            // $fieldname = "file";
+            // $setting['savePath']='fapiao/';
+            // $Upload = new \Think\Upload($setting);
+            // $info = $Upload->upload();
             // if(!$info){
             //     $this->error("写入云存储失败~");
             // }
@@ -61,11 +61,10 @@ class IndexController extends Controller {
             //     $url_oss = OSS2 . $info[$fieldname]['savepath'] . $info[$fieldname]['savename'];
             //     $Moneylist=M("Moneylist");
             //     $add_arr['pic']=$url_oss;
-            //     $add_arr['account']=$account;
-            //     $add_arr['thing']=$thing;
+            //     $add_arr['amount']=$amount;
+            //     $add_arr['info']=$info;
             //     $add_arr['date']=$date;
             //     $add_arr['fid']=I("get.fid","1");
-
             //     $s=$Moneylist->add($add_arr);
             //     if($s){
             //         $this->success("写入数据库成功~");
@@ -74,11 +73,10 @@ class IndexController extends Controller {
             //         $this->error("写入数据库失败~");
             //     }
             // }
-            $url_oss = OSS2 . $info[$fieldname]['savepath'] . $info[$fieldname]['savename'];
             $Moneylist=M("Moneylist");
-            $add_arr['pic']="固定路径";
-            $add_arr['account']=$account;
-            $add_arr['thing']=$thing;
+            $add_arr['pic']="fixed";
+            $add_arr['amount']=$amount;
+            $add_arr['info']=$info;
             $add_arr['date']=$date;
             $add_arr['fid']=I("get.fid","1");
 
