@@ -23,6 +23,19 @@ class IndexController extends Controller {
         $this->display();
     }
 
+    public function checkChange(){
+        $id=I("get.id");
+        $List=M("List");
+        $data['state'] = 2;
+        $s = $List->where("id='%d'",$id)->save($data);
+        if($s){
+            $this->success("修改状态成功~");
+        }
+        else{
+            $this->error("修改状态失败~");
+        }
+    }
+
     public function bookShow(){
         $Book=M("Book");
         $d=$Book->order('date desc')->select();
