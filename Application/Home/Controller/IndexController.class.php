@@ -3,8 +3,8 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        $List=M("List");
-        $d=$List->order('date desc')->select();
+        $Book=M("Book");
+        $d=$Book->order('date desc')->select();
         $this->data=$d;
         $this->display();
     }
