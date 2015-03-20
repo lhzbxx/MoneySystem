@@ -23,8 +23,8 @@
             <h2>发票列表</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+    <div class="row" align="center">
+        <div class="col-md-6 col-md-offset-3">
             <table class="table table-striped">
                 <tr>
                     <th>号码</th>
@@ -32,18 +32,24 @@
                     <th>金额</th>
                     <th>时间</th>
                     <th>备注</th>
+                    <th>账本</th>
+                    <th>状态</th>
+                    <th>操作</th>
                 </tr>
                 <volist name="data" id="d">
                     <tr>
                         <td>{$d.fid}</td>
                         <td>{$d.pic}</td>
-                        <td>{$d.account}</td>
+                        <td>{$d.amount}</td>
                         <td>{$d.date}</td>
-                        <td>{$d.thing}</td>
+                        <td>{$d.info}</td>
+                        <td>{$d.book}</td>
+                        <td>{$d.state}</td>
+                        <td><a href="{:U('Home/Index/checkAdd','','')}?fid={$d.id}" class="btn btn-primary btn-xs">确认</a> </td>
                     </tr>
                 </volist>
             </table>
-            <a href="{:U('Home/Index/cln','','')}" align="center" class="btn btn-primary">进入账本</a>
+            <a href="{:U('Home/Index/index','','')}" align="center" class="btn btn-primary">返回</a>
         </div>
     </div>
 </div>

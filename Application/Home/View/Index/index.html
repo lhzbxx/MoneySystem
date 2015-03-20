@@ -18,10 +18,15 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+    <div class="row" align="center">
         <div class="col-md-12 text-center">
             <h2>账本列表</h2>
         </div>
+        <a href="{:U('Home/Index/bookAdd','','')}" class="btn btn-primary">新账本</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{:U('Home/Index/checkAdd','','')}" class="btn btn-primary">新发票</a>
+        <br />
+        <br />
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -37,7 +42,7 @@
                         <td>{$d.name}</td>
                         <td>{$d.info}</td>
                         <td>{$d.date}</td>
-                        <td><a href="{:U('Home/Index/checkShow','','')}?fid={$d.id}" class="btn btn-primary btn-xs">查看</a></td>
+                        <td><a href="{:U('Home/Index/checkShow','','')}?book={$d.name}" class="btn btn-primary btn-xs">查看</a></td>
                     </tr>
                 </volist>
             </table>

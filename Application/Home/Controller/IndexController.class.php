@@ -15,6 +15,14 @@ class IndexController extends Controller {
     //     $this->ajaxReturn($d);
     // }
 
+    public function checkShow(){
+        $book=I("get.book");
+        $List=M("List");
+        $d=$List->where("book='%s'",$book)->order('date desc')->select();
+        $this->data=$d;
+        $this->display();
+    }
+
     public function bookShow(){
         $Book=M("Book");
         $d=$Book->order('date desc')->select();
@@ -53,9 +61,11 @@ class IndexController extends Controller {
         $amount =   I("post.amount","");
         $info   =   I("post.info","");
         $date   =   I("post.date","");
+        $book   =   I("post.book","");
+        $fid    =   I("post.fid","");
 
-        if($amount=='' || $info=='' || $date=='') {
-            $this->action_url=U('Home/Index/checkAdd','','')."?fid=".I("get.fid","");
+        if($amount=='' || $info=='' || $date=='' || $book=='') {
+            $this->action_url=U('Home/Index/checkAdd');
             $this->display();
         }
         else{
@@ -83,12 +93,13 @@ class IndexController extends Controller {
             //         $this->error("写入数据库失败~");
             //     }
             // }
-            $Moneylist=M("Moneylist");
+            $Moneylist=M("List");
             $add_arr['pic']="fixed";
             $add_arr['amount']=$amount;
             $add_arr['info']=$info;
             $add_arr['date']=$date;
-            $add_arr['fid']=I("get.fid","1");
+            $add_arr['book']=$book;
+            $add_arr['fid']=$fid;
 
             $s=$Moneylist->add($add_arr);
             if($s){
